@@ -2,6 +2,10 @@ import { render, screen } from '@testing-library/react';
 import App from './App';
 import data from "./data.json";
   
+
+
+
+test('aplicar tema por defecto', () => {
 // Mock window.matchMedia
   window.matchMedia = jest.fn().mockImplementation((query) => {
     return {
@@ -12,15 +16,7 @@ import data from "./data.json";
       removeListener: jest.fn(),
     };
   });
-
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
-
-test('aplicar tema por defecto', () => {
-
+  
   render(<App />);
   const htmlElement = document.documentElement;
   const appliedTheme = htmlElement.getAttribute('data-theme');
